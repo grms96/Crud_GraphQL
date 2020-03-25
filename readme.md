@@ -5,7 +5,7 @@
 Clone the repo using 
 
 ```bash
-git clone 
+git clone https://github.com/grms96/Crud_GraphQL
 ```
 
 Install node modules
