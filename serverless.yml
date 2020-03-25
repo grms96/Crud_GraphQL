@@ -1,0 +1,61 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: hdw-assignment
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  iamRoleStatements:
+              - Effect: Allow
+                Action:
+                  - dynamodb:DescribeTable
+                  - dynamodb:Query
+                  - dynamodb:Scan
+                  - dynamodb:GetItem
+                  - dynamodb:PutItem
+                  - dynamodb:UpdateItem
+                  - dynamodb:DeleteItem
+                Resource:
+                   Fn::Join:
+                     - ""
+                     - - "arn:aws:dynamodb:*:*:table/"
+                       - Ref: ProductsGqlDynamoDbTable
+
+
+functions:
+  queryProducts:
+        handler: handler.queryMatches
+        events:
+        - http:
+            path: matches
+            method: post
+            cors: true
+        environment:
+          TABLE_NAME: matches-gql
+
+resources:
+      Resources:
+        MatchesGqlDynamoDbTable:
+          Type: AWS::DynamoDB::Table
+          Properties:
+            TableName: matches-gql
+            AttributeDefinitions:
+              - AttributeName: match_Id
+                AttributeType: S
+            KeySchema:
+              - AttributeName: match_Id
+                KeyType: HASH
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1
