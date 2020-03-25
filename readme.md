@@ -25,8 +25,7 @@ we will make requests against the same url
 
 For inserting the data into db
 
-```
-bash
+```bash
 mutation {
       createMatch (data) {
         list of attributes 
@@ -36,8 +35,7 @@ mutation {
 
 For getting one match with id
 
-```
-bash
+```bash
 query {
       getMatchByID (id:"id") {
        list of attributes
@@ -47,7 +45,7 @@ query {
 
 For getting all matches between date range
 
-``` bash
+```bash
 query {
       getMatchesByDateRange(args) {
         list of attributes
@@ -57,7 +55,7 @@ query {
 
 For updating series_name
 
-````bash
+```bash
 mutation {
       updateMatchField (data){
           list of attributes
