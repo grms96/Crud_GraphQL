@@ -30,11 +30,11 @@ provider:
                    Fn::Join:
                      - ""
                      - - "arn:aws:dynamodb:*:*:table/"
-                       - Ref: ProductsGqlDynamoDbTable
+                       - Ref: MatchesGqlDynamoDbTable
 
 
 functions:
-  queryProducts:
+  queryMatches:
         handler: handler.queryMatches
         events:
         - http:
