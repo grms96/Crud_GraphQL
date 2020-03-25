@@ -12,7 +12,7 @@ Install node modules
 ```bash
 npm install
 ```
-# Deployment
+## Deployment
 
 ```bash
 serverles deploy
@@ -21,7 +21,7 @@ copy the end point url of the output
 
 we will make requests against the same url
 
-# Query the API
+## Query the API
 
 For inserting the data into db
 

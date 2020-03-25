@@ -4,6 +4,10 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports = {
 
+    /**
+     * function to get the match by id
+     * @param {*} match_Id 
+     */
     getMatchByID: function (match_Id) {
         const params = {
             TableName: process.env.TABLE_NAME,
@@ -13,6 +17,11 @@ module.exports = {
             .then(r => r.Item);
     },
     
+    /**
+     * function to get all the matches for a date range
+     * @param {*} start_date 
+     * @param {*} end_date 
+     */
     getMatchesByDateRange: function (start_date, end_date) {
         const params = {
             TableName: process.env.TABLE_NAME,
@@ -30,6 +39,10 @@ module.exports = {
             .then(r => r.Item);
     },
     
+    /**
+     * function to update series_name
+     * @param {*} data 
+     */
     updateMatchField: function (data) {
 
         const params = {
@@ -45,6 +58,10 @@ module.exports = {
             .then(result => result.Item)
     },
 
+    /**
+     * function to insert a new match to the db
+     * @param {} data 
+     */
     createMatch : function (data) {
 
         const params = {
